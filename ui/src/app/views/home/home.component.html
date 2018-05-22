@@ -1,0 +1,8 @@
+<app-header (toggle)="toggleSideBar()"></app-header>
+<div class="all-wrap" fxLayout="row" fxLayoutAlign="start none">
+  <app-sidenav autosize [expandedMenu]="true" fxFlex="nogrow" ></app-sidenav>
+  <alert></alert>
+  <div class="container-fluid" fxFlex="auto">
+    <router-outlet></router-outlet>
+  </div>
+</div>

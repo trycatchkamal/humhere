@@ -1,0 +1,186 @@
+/* You can add global styles to this file, and also import other style files */
+/*
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+@import "~bootswatch/dist/yeti/_variables.scss";
+@import "~bootstrap/scss/bootstrap.scss";
+@import "~bootswatch/dist/yeti/_bootswatch.scss";
+*/
+
+@import '~@angular/material/theming/';
+
+@include mat-core();
+
+$my-app-primary: mat-palette($mat-deep-orange);
+$my-app-accent:  mat-palette($mat-grey);
+$my-app-warn:    mat-palette($mat-cyan);
+
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+//$my-app-theme: mat-dark-theme($my-app-primary, $my-app-accent, $my-app-warn);
+
+@include angular-material-theme($my-app-theme);
+
+.alternate-theme {
+  $alternate-primary: mat-palette($mat-deep-orange);
+  $alternate-accent:  mat-palette($mat-grey,50,A100,A200);
+  $my-app-warn:    mat-palette($mat-cyan);
+
+  $alternate-theme: mat-dark-theme($alternate-primary, $alternate-accent);
+
+  @include angular-material-theme($alternate-theme);
+}
+
+.bv-pp-theme {
+  // define a real custom palette (using http://mcg.mbitson.com)
+  $bv-brand: (
+    50: #ffffff,
+    100: #dde6f3,
+    200: #b4c9e4,
+    300: #7fa3d1,
+    400: #6992c9,
+    500: #5282c1,
+    600: #4072b4,
+    700: #38649d,
+    800: #305687,
+    900: #284770,
+    A100: #ffffff,
+    A200: #dde6f3,
+    A400: #6992c9,
+    A700: #38649d,
+    contrast: (
+      50: $black-87-opacity,
+      100: $black-87-opacity,
+      200: $black-87-opacity,
+      300: $black-87-opacity,
+      400: $black-87-opacity,
+      500: white,
+      600: white,
+      700: white,
+      800: white,
+      900: white,
+      A100: $black-87-opacity,
+      A200: $black-87-opacity,
+      A400: $black-87-opacity,
+      A700: white,
+    )
+  );
+
+  $bv-orange: (
+    50: #ffffff,
+    100: #fff7f4,
+    200: #fecdbd,
+    300: #fc9977,
+    400: #fc8259,
+    500: #fb6c3b,
+    600: #fa551d,
+    700: #f44205,
+    800: #d63a04,
+    900: #b83204,
+    A100: #ffffff,
+    A200: #fff7f4,
+    A400: #fc8259,
+    A700: #f44205,
+    contrast: (
+      50: $black-87-opacity,
+      100: $black-87-opacity,
+      200: $black-87-opacity,
+      300: $black-87-opacity,
+      400: $black-87-opacity,
+      500: white,
+      600: white,
+      700: white,
+      800: white,
+      900: white,
+      A100: $black-87-opacity,
+      A200: $black-87-opacity,
+      A400: $black-87-opacity,
+      A700: white,
+    )
+  );
+
+  // mandatory stuff for theming
+  $bv-pp-primary: mat-palette($bv-orange);
+  $bv-pp-accent: mat-palette($bv-brand);
+
+  // include the custom theme components into a theme object
+  $bv-pp-theme: mat-light-theme($bv-pp-primary, $bv-pp-accent);
+
+  // include the custom theme object into the angular material theme
+  @include angular-material-theme($bv-pp-theme);
+}
+
+//@import '~@angular/material/prebuilt-themes/purple-green.css';
+
+
+.mainsection {
+  width:100%;
+  height:100%;
+  background: url(assets/note_piano.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:cover;
+  background-attachment: fixed;
+}
+
+.roundContainer {
+  box-shadow:0px 0px 70px #222;
+  -moz-box-shadow:0px 0px 70px #222;
+  -webkit-box-shadow:0px 0px 70px #222;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  background-color:#fff;
+  margin:0px auto;
+  border-left:2px solid #fff;
+  border-right:2px solid #fff;
+}
+
+.innerBox{
+  background-color: white;margin-top: -40px;position: relative; margin-right: 50px;margin-left: 50px; height: 100%;z-index: 20;
+}
+
+.third{
+  background-color: black;margin-top: -40px;position: relative;height: 100%; z-index: 2; opacity: .3;
+}
+
+
+
+/*********************************************/
+.all-wrap {
+  min-height: 82vh;
+}
+
+.page-wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 82vh;
+}
+
+.content {
+  flex: 1;
+}
+
+
+/*
+ * Make the Component injected by Router Outlet full height:
+ */
+main {
+  display: flex;
+  flex-direction: column;
+  > *:not(router-outlet) {
+    flex: 1;
+    display: block;
+  }
+}
+
+mat-sidenav {
+  /*  min-width: 50px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;*/
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,36 @@
+<mat-toolbar color="primary">
+  <div class="container-fluid">
+    <div fxLayout="row">
+      <div fxLayoutAlign="start center">
+        <button mat-icon-button (click)="toggleSidebar()">
+          <mat-icon>
+            menu
+          </mat-icon>
+        </button>
+        <span>HUMHERE</span>
+      </div>
+
+      <div fxFlex="1 1 auto"></div>
+
+      <button mat-icon-button>
+        <mat-icon>
+          search
+        </mat-icon>
+      </button>
+
+      <div fxHide.lt-sm="true" fxLayoutAlign="end center" fxFlexOffset="2">
+        <mat-icon>
+          location_on
+        </mat-icon>
+        <span matTooltip="Choosen city - {{selectedCity$ | async}}"
+              matTooltipPosition="below">{{selectedCity$ | async}}</span>
+        <div *ngIf="isLoggedIn$ | async" fxFlexOffset="7">
+          <button mat-raised-button (click)="this.authService.logout()">Logout</button>
+        </div>
+        <div *ngIf="!(isLoggedIn$ | async)" fxFlexOffset="7">
+          <button mat-raised-button (click)="login()">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-toolbar>

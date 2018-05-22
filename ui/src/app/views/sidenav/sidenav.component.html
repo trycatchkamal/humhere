@@ -1,0 +1,69 @@
+<mat-sidenav-container autosize style="height: 100%">
+
+  <mat-sidenav #sidenav class="side-nav" mode="side" opened="true">
+    <mat-nav-list *ngIf="isLoggedIn$ | async">
+
+      <a nav-item class="nav-link mat-list-item" [routerLink]="['dashboard']" routerLinkActive="active">
+        <mat-icon matTooltip="Dashboard"
+                  matTooltipPosition="left">dashboard
+        </mat-icon>
+        <span *ngIf="expandedMenu">Dashboard</span>
+      </a>
+      <a nav-item class="nav-link mat-list-item link" [routerLink]="['bookings']" routerLinkActive="active">
+        <mat-icon matTooltip="Bookings"
+                  matTooltipPosition="left">perm_contact_calendar
+        </mat-icon>
+        <span *ngIf="expandedMenu">Bookings</span>
+      </a>
+      <a nav-item class="nav-link mat-list-item" [routerLink]="['listings']" routerLinkActive="active">
+        <mat-icon matTooltip="Listings"
+                  matTooltipPosition="left">list
+        </mat-icon>
+        <span *ngIf="expandedMenu">Listings</span>
+      </a>
+      <a nav-item class="nav-link mat-list-item" [routerLink]="['reviews']" routerLinkActive="active">
+        <mat-icon matTooltip="Reviews"
+                  matTooltipPosition="left">grade
+        </mat-icon>
+        <span *ngIf="expandedMenu">Reviews</span>
+      </a>
+      <a nav-item class="nav-link mat-list-item" [routerLink]="['settings']" routerLinkActive="active">
+        <mat-icon matTooltip="Settings"
+                  matTooltipPosition="left">settings
+        </mat-icon>
+        <span *ngIf="expandedMenu">Settings</span>
+      </a>
+    </mat-nav-list>
+
+
+    <div class="container-fluid">
+      <mat-nav-list *ngIf="!(isLoggedIn$ | async)">
+        <div>
+          <p><u>Login using</u></p>
+        </div>
+        <a nav-item class="nav-link mat-list-item" [routerLink]="['/login']" routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact: true}" matTooltip="Login with Google">
+          <mat-icon
+            matTooltipPosition="left"><i class="fab fa-google" aria-hidden="true"></i>
+          </mat-icon>
+          <span *ngIf="expandedMenu">Google account</span>
+        </a>
+        <a nav-item class="nav-link mat-list-item" [routerLink]="['/login']" routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact: true}" matTooltip="Login with facebook">
+          <mat-icon
+            matTooltipPosition="left"><i class="fab fa-facebook"></i>
+          </mat-icon>
+          <span *ngIf="expandedMenu">Facebook account</span>
+        </a>
+
+        <a nav-item class="nav-link mat-list-item" [routerLink]="['/login']" routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact: true}" matTooltip="Login with Humhere account">
+          <mat-icon
+            matTooltipPosition="left">music_note
+          </mat-icon>
+          <span *ngIf="expandedMenu">Humhere account</span>
+        </a>
+      </mat-nav-list>
+    </div>
+  </mat-sidenav>
+</mat-sidenav-container>

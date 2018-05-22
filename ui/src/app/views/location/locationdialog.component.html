@@ -1,0 +1,27 @@
+<!--<h1 mat-dialog-title>Choose your city</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-select>
+      <mat-option>Test</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="">Ok</button>
+</div>
+-->
+<div class="header container-fluid">
+  <div fxLayout="row" fxLayoutAlign="space-between center" >
+    <h1 mat-dialog-title >Choose your city</h1>
+    <button mat-dialog-close mat-icon-button *ngIf="isPlaceSelected">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
+<mat-dialog-content>
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" (change)="valueChanged($event)"
+                             fxLayout="row wrap" fxFlexAlign="center center" >
+      <mat-button-toggle *ngFor="let place of places" value="{{place.name}}">{{place.name}}</mat-button-toggle>
+    </mat-button-toggle-group>
+</mat-dialog-content>
