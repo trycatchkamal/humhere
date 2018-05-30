@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {forwardRef,NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {
   HttpClientModule,
@@ -60,6 +60,7 @@ import { AlertComponent } from './views/alert/alert.component';
 import {AlertService} from "./services/alert.service";
 import {LocationService} from "./services/location.service";
 import 'hammerjs';
+import { ExploreComponent } from './views/explore/explore.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import 'hammerjs';
     ReviewsComponent,
     ListingsComponent,
     SettingsComponent,
-    AlertComponent
+    AlertComponent,
+    ExploreComponent
   ],
   imports: [
     HttpClientModule,
@@ -105,7 +107,7 @@ import 'hammerjs';
     FlexLayoutModule,
     MatDialogModule,
     MatAutocompleteModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ],
   providers: [
     AppService,

@@ -16,7 +16,7 @@ import {User} from '../../models/user'
 export class HeaderComponent implements OnInit {
 
   searchTerm:FormControl = new FormControl();
-
+  showSearch:boolean=false;
   isLoggedIn$:Observable<boolean>;
   selectedCity$:Observable<string>;
 

@@ -5,6 +5,8 @@ import {LocationDialog} from "./views/location/locationdialog.component";
 import {Observable} from 'rxjs';
 import {ISubscription} from 'rxjs/Subscription';
 import {LocationService} from "./services/location.service";
+import { LocalStorage } from '@ngx-pwa/local-storage';
+
 
 @Component({
   selector: 'app-root',
@@ -17,8 +19,12 @@ export class AppComponent implements OnInit,AfterViewInit, OnDestroy {
   selectedCity$:Observable<string>;
   private citySubscription: ISubscription;
   private welcomeMessageSubscription: ISubscription;
+  static readonly TIMEOUT:number=1500;
 
-  constructor(private locationService:LocationService, private appService:AppService, public dialog:MatDialog) {
+  constructor(private locationService:LocationService,
+              private appService:AppService,
+              public dialog:MatDialog,
+              private storageService:LocalStorage) {
     this.welcomeMessageSubscription=this.appService.getWelcomeMessage().subscribe((data:any) => {
       this.title = data.content;
     });
@@ -40,12 +46,14 @@ export class AppComponent implements OnInit,AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    this.citySubscription=this.selectedCity$.subscribe(city=> {
-      if (!this.appService.isNonEmptyString(city)) {
-        this.openDialog();
-      }
-    });
-  }
+    setTimeout(() => {
+      this.citySubscription = this.selectedCity$.subscribe(city=> {
+        if (!this.appService.isNonEmptyString(city)) {
+           this.openDialog();
+        }
+      });}
+    ,AppComponent.TIMEOUT);
+    }
 
   ngOnDestroy(){
     this.citySubscription.unsubscribe();

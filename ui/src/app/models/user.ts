@@ -1,7 +1,8 @@
-﻿export interface User {
-    id: number;
-    username: string;
-    password: string;
-    firstname: string;
-    lastname: string;
+﻿import {baseuiobject} from '../models/baseuiobject'
+
+export interface User extends baseuiobject {
+  username: string;
+  password: string;
+  firstname: string;
+  lastname: string;
 }

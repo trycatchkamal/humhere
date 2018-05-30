@@ -12,7 +12,7 @@ import {MyErrorStateMatcher} from "../../services/errorstatematcher";
 export class HomeComponent implements OnInit {
   @HostBinding('class.alternate-theme') darkTheme: boolean = false;
   @HostBinding('class.my-app-theme') lightTheme: boolean =false;
-  @HostBinding('class.bv-pp-theme') altTheme:boolean=false;
+  @HostBinding('class.bv-pp-theme') altTheme:boolean=true;
 
   constructor() {
   }
