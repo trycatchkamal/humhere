@@ -1,0 +1,21 @@
+:host {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+
+agm-map{
+  height: 550px;
+}
+
+:host ::ng-deep app-spaceexhibit{
+  margin-top:20px !important;
+}
+
+scrollable{
+  -webkit-flex: 1 1 auto;
+  overflow-y: auto;
+  height: 0px;
+}

@@ -16,7 +16,7 @@ export class AuthService {
 
   logout():void {
       this.loggedIn.next(false);
-      this.router.navigate(['/home']);
+      this.router.navigate(['/landing']);
   }
 
   constructor(private router: Router) {

@@ -1,4 +1,4 @@
-<mat-toolbar [hidden]="showSearch" >
+<mat-toolbar [hidden]="showSearch">
   <div class="container-fluid">
     <div fxLayout="row">
       <div fxLayoutAlign="start center">
@@ -12,7 +12,7 @@
 
       <div fxFlex="1 1 auto"></div>
 
-      <button mat-icon-button (click)="showSearch = !showSearch">
+      <button mat-icon-button (click)="showSearch = !showSearch" [hidden]="hideSearch">
         <mat-icon>
           search
         </mat-icon>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, Output, EventEmitter, HostListener } from '@angular/core';
+import { Component, OnInit, Inject, Output, EventEmitter, HostListener,Input } from '@angular/core';
 import {MatDialog,MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {LocationDialog} from '../location/locationdialog.component';
 import {AuthService} from "../../services/auth/auth.service";
@@ -19,6 +19,9 @@ export class HeaderComponent implements OnInit {
   showSearch:boolean=false;
   isLoggedIn$:Observable<boolean>;
   selectedCity$:Observable<string>;
+
+  @Input()
+  hideSearch:boolean=false;
 
   ngOnInit() {
     this.isLoggedIn$ = this.authService.isLoggedIn;

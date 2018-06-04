@@ -1,0 +1,18 @@
+<div class="container jumpAbove">
+  <mat-card class=rounded>
+    <img mat-card-image [src]="space.imageUrl" alt="space-sneak-peak">
+    <mat-card-content>
+      <h6>{{space.name}}</h6>
+      <div fxLayout="row" fxLayoutGap="5px">
+        <mat-icon>
+          location_on
+        </mat-icon>
+        <p class="text-info" style="word-wrap: break-word; width: 80px">{{space.locatedAt}}</p>
+      </div>
+      {{space.openedOnDays}}
+    </mat-card-content>
+    <mat-card-actions *ngIf="!actionsHidden">
+      <button mat-raised-button style="width: 100%">Book</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

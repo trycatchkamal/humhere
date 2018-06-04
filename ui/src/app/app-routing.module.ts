@@ -8,6 +8,9 @@ import {ListingsComponent} from "../app/views/listings/listings.component";
 import {ReviewsComponent} from "../app/views/reviews/reviews.component";
 import {SettingsComponent} from "../app/views/settings/settings.component";
 import {AuthGuard} from "../app/services/auth/auth-guard.service"
+import {LandingComponent} from "./views/landing/landing.component";
+import {ExploreComponent} from "./views/explore/explore.component";
+import {ListComponent} from "./views/list/list.component";
 
 const routes:Routes = [
   {
@@ -42,13 +45,25 @@ const routes:Routes = [
     ]
   },
   {
+    path: 'landing',
+    component: LandingComponent,
+  },
+  {
+    path: 'list',
+    component: ListComponent,
+  },
+  {
+    path: 'explore',
+    component: ExploreComponent,
+  },
+  {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/landing',
     pathMatch: 'full'
   },
   {
     path: '**',
-    redirectTo: '/home',
+    redirectTo: '/landing',
     pathMatch: 'full'
   }
 ];

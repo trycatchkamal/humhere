@@ -29,7 +29,7 @@ import {
   MatNativeDateModule,
   MatDialogModule,
   MatAutocompleteModule,
-  MatSnackBarModule
+  MatSnackBarModule,
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -40,14 +40,25 @@ import {
 } from '@angular/material/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {
+  SocialLoginModule,
+  AuthServiceConfig,
+  GoogleLoginProvider } from "angular5-social-login";
+import {SlimLoadingBarModule} from "ng2-slim-loading-bar"
+import { AgmCoreModule } from '@agm/core';
 
+import {HomeComponent} from "../app/views/home/home.component";
 import {AppRoutingModule} from './app-routing.module';
+import { getAuthServiceConfigs } from './config/socialLogin' ;
+import {WINDOW_PROVIDERS} from '../app/helpers/window.service';
+import {LoaderInterceptor} from './interceptors/loader-interceptor.service'
 import {AppService} from "./services/app.service";
 import {MyErrorStateMatcher} from "./services/errorstatematcher";
 import {AuthService} from "./services/auth/auth.service";
 import {SidebarService} from "./services/sidebar.service"
 import {AuthGuard} from "./services/auth/auth-guard.service";
-import {HomeComponent} from "../app/views/home/home.component";
+import {AlertService} from "./services/alert.service";
+import {LocationService} from "./services/location.service";
 import { HeaderComponent } from './views/header/header.component';
 import { SidenavComponent } from './views/sidenav/sidenav.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
@@ -57,10 +68,12 @@ import { ListingsComponent } from './views/listings/listings.component';
 import { SettingsComponent } from './views/settings/settings.component';
 import {LocationDialog} from "./views/location/locationdialog.component";
 import { AlertComponent } from './views/alert/alert.component';
-import {AlertService} from "./services/alert.service";
-import {LocationService} from "./services/location.service";
 import 'hammerjs';
 import { ExploreComponent } from './views/explore/explore.component';
+import { LandingComponent } from './views/landing/landing.component';
+import { ModalComponent } from './views/modal/modal.component';
+import { SpaceexhibitComponent } from './views/spaceexhibit/spaceexhibit.component';
+import { ListComponent } from './views/list/list.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +88,11 @@ import { ExploreComponent } from './views/explore/explore.component';
     ListingsComponent,
     SettingsComponent,
     AlertComponent,
-    ExploreComponent
+    ExploreComponent,
+    LandingComponent,
+    ModalComponent,
+    SpaceexhibitComponent,
+    ListComponent
   ],
   imports: [
     HttpClientModule,
@@ -108,8 +125,18 @@ import { ExploreComponent } from './views/explore/explore.component';
     MatDialogModule,
     MatAutocompleteModule,
     MatSnackBarModule,
+    SlimLoadingBarModule.forRoot(),
+    SocialLoginModule,
+    AgmCoreModule.forRoot({
+      apiKey:'AIzaSyC8yglJMdyfOzwT-gX8FFCGCpMcSHWfxAY'
+    })
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true,
+    },
     AppService,
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
     MyErrorStateMatcher,
@@ -117,7 +144,12 @@ import { ExploreComponent } from './views/explore/explore.component';
     AuthGuard,
     SidebarService,
     AlertService,
-    LocationService
+    LocationService,
+    {
+      provide: AuthServiceConfig,
+      useFactory: getAuthServiceConfigs
+    },
+    WINDOW_PROVIDERS
   ],
   bootstrap: [AppComponent],
   entryComponents: [

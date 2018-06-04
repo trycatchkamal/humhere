@@ -19,18 +19,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/vendors/scrolloverflow.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.min.css"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.min.js"></script>
-  <script>
-    $(document).ready(function () {
-      $('#fullpage').fullpage();
-    });
 
-    $(function () {
-      $(document).scroll(function () {
-        var $nav = $(".fixed-top");
-        $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
-      });
-    });
-  </script>
+
 </head>
 <body>
 <app-root></app-root>

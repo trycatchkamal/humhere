@@ -1,0 +1,86 @@
+<section class="bg aligned">
+  <app-header id="header" [hideSearch]="true" [ngClass]="{'sticky':true,'solidColored':solidColored}"
+              (toggle)="toggleSideBar()"></app-header>
+  <div class="container-fluid">
+
+    <div class="container" style="margin-bottom: 50px">
+      <div fxLayout="row"
+           fxLayoutAlign="center center"
+           style="color: white;"
+           fxLayoutGap="30px"
+           fxLayoutGap.lt-sm="15px">
+        <h2>DO YOU <span class="blinking-cursor">OWN</span> A STUDIO | JAMROOM? </h2>
+        <button mat-raised-button [routerLink]="['/list']" routerLinkActive="active"> List</button>
+      </div>
+    </div>
+
+    <div class="container">
+      <div fxLayout="row" fxLayoutAlign="space-evenly">
+
+        <mat-card [ngClass]="{'slideRight':true}">
+          <mat-card-subtitle align="center"><h6>FIND & RENT CREATIVE SPACE ON-DEMAND</h6></mat-card-subtitle>
+          <mat-card-content fxLayoutGap="20px">
+
+            <mat-form-field>
+              <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto"
+                     placeholder="Location, area">
+
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+
+            <mat-divider [vertical]="true"></mat-divider>
+            <mat-form-field>
+              <mat-select placeholder="Type of place">
+                <mat-option [value]="Studio">
+                  Studio
+                </mat-option>
+                <mat-option [value]="Jamroom">
+                  Jamroom
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-divider [vertical]="true"></mat-divider>
+
+            <mat-form-field>
+              <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Choose a date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+
+            <mat-divider [vertical]="true"></mat-divider>
+
+            <button mat-raised-button> Search</button>
+          </mat-card-content>
+          <mat-card-footer style="padding: 15px;font-size: small">
+            <a [routerLink]="['/explore']" routerLinkActive="active">Advanced Search</a>
+          </mat-card-footer>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="height:auto; padding-top:40px;padding-bottom: 40px;">
+
+  <div class="container">
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-evenly" fxLayoutGap="35px"
+         fxLayoutGap.lt-md="60px">
+      <div *ngFor="let space of topFewSpaces; let i=index">
+        <app-spaceexhibit fxFlex="20" [space]="space" *ngIf="i<4"></app-spaceexhibit>
+      </div>
+    </div>
+
+    <div fxLayoutAlign="center center" fxLayoutGap="20px" style="padding: 25px;font-size: small">
+      <a class="btn-info btn rounded" [routerLink]="['/explore']" routerLinkActive="active">Explore All</a>
+    </div>
+  </div>
+
+</section>
+
+<section>
+
+</section>
