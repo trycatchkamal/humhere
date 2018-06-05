@@ -8,8 +8,8 @@ import {Space} from "../../models/space";
 })
 export class ExploreComponent implements OnInit {
 
-  lat: number = 51.678418;
-  lng: number = 7.809007;
+  lat: number = 13.0826802;
+  lng: number = 80.2707184;
 
   topFewSpaces:Space[] = [
     <Space>{

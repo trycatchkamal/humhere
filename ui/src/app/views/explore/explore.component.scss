@@ -6,16 +6,38 @@
   top: 0;
 }
 
-agm-map{
-  height: 550px;
+:host ::ng-deep agm-map {
+  height: 78vh;
 }
 
-:host ::ng-deep app-spaceexhibit{
-  margin-top:20px !important;
+:host ::ng-deep app-spaceexhibit {
+  margin-top: 20px !important;
 }
 
-scrollable{
-  -webkit-flex: 1 1 auto;
-  overflow-y: auto;
-  height: 0px;
+.scrollable {
+  margin: 5px 0 20px 0;
+  height: 100%;
+  overflow: auto
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+  .scrollable {
+    margin: 5px 0 20px 0;
+    height: 77vh;
+    overflow: auto
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+  .scrollable {
+    margin: 5px 0 20px 0;
+    height: 77vh;
+    overflow: auto
+  }
+}
+
+.alignSpaceExhibit{
+  margin: 10px 0 0 20px;
 }

@@ -3,15 +3,19 @@
 <div class="container-fluid">
 
   <div fxLayout="row" fxLayout.lt-sm="column">
-    <div fxFlex="55">
+
+    <div fxFlex="55" fxLayout="column">
+        <span class="alignSpaceExhibit">{{topFewSpaces.length}} facilities found near you</span>
       <div fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutAlign="start space-around" fxLayoutGap="5px"
-           fxLayoutGap.lt-md="20px" style="margin:5px 0 20px 0">
-        <app-spaceexhibit *ngFor="let space of topFewSpaces" fxFlex="48" [space]="space"
-                          [actionsHidden]="false"></app-spaceexhibit>
+           fxLayoutGap.lt-md="20px" class="scrollable">
+      <app-spaceexhibit *ngFor="let space of topFewSpaces" fxFlex="48" [space]="space"
+                        [actionsHidden]="false"></app-spaceexhibit>
       </div>
     </div>
+
     <div fxFlex="45" fxHide.lt-sm="true">
-      <agm-map [latitude]="lat" [longitude]="lng"></agm-map>
+      <app-google-map></app-google-map>
     </div>
+
   </div>
 </div>

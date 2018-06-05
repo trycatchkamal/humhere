@@ -1,13 +1,13 @@
 <div class="container jumpAbove">
   <mat-card class=rounded>
-    <img mat-card-image [src]="space.imageUrl" alt="space-sneak-peak">
+    <img mat-card-image style="height:200px" [src]="space.imageUrl" alt="space-sneak-peak">
     <mat-card-content>
-      <h6>{{space.name}}</h6>
+      <p>{{space.name}} test</p>
       <div fxLayout="row" fxLayoutGap="5px">
         <mat-icon>
           location_on
         </mat-icon>
-        <p class="text-info" style="word-wrap: break-word; width: 80px">{{space.locatedAt}}</p>
+        <p class="text-info wrap">{{space.locatedAt}}</p>
       </div>
       {{space.openedOnDays}}
     </mat-card-content>

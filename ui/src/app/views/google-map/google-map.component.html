@@ -1,0 +1,11 @@
+<div *ngIf="lat && lng">
+  <div class="overlayPlacesAutocomplete">
+    <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off"
+           #search [formControl]="searchControl" class="form-control">
+  </div>
+  <agm-map style="top:-100px" [latitude]="lat" [longitude]="lng" [scrollwheel]="false" [zoom]="zoom">
+    <agm-marker [latitude]="lat" [longitude]="lng">
+    </agm-marker>
+  </agm-map>
+
+</div>

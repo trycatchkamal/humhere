@@ -74,6 +74,8 @@ import { LandingComponent } from './views/landing/landing.component';
 import { ModalComponent } from './views/modal/modal.component';
 import { SpaceexhibitComponent } from './views/spaceexhibit/spaceexhibit.component';
 import { ListComponent } from './views/list/list.component';
+import {environment} from "../environments/environment";
+import { GoogleMapComponent } from './views/google-map/google-map.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +94,8 @@ import { ListComponent } from './views/list/list.component';
     LandingComponent,
     ModalComponent,
     SpaceexhibitComponent,
-    ListComponent
+    ListComponent,
+    GoogleMapComponent
   ],
   imports: [
     HttpClientModule,
@@ -128,7 +131,8 @@ import { ListComponent } from './views/list/list.component';
     SlimLoadingBarModule.forRoot(),
     SocialLoginModule,
     AgmCoreModule.forRoot({
-      apiKey:'AIzaSyC8yglJMdyfOzwT-gX8FFCGCpMcSHWfxAY'
+      apiKey:environment.googleMapsKey,
+      libraries: ["places"]
     })
   ],
   providers: [
